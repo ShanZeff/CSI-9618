@@ -7,7 +7,7 @@ SearchItem = int(input("What number are you searching for?: "))
 
 while not Found and not SearchFailed:
     Middle = (First + Last) / 2     # find middle of current search area
-    if List[Middle] = SearchItem:
+    if List[Middle] == SearchItem:
         Found = True
     else:
         if First >= Last: # no search area left
@@ -18,7 +18,7 @@ while not Found and not SearchFailed:
             else:
                 First = Middle + 1
 
-if Found = True:
-    print(Middle)
+if Found == True:
+    print(List[Middle])
 else:
     print("Item not present in array")
