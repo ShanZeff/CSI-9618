@@ -3,6 +3,7 @@
 # NullPointer should be set to -1 if using array element with index 0
 null_pointer = -1
 
+
 # Declare record type to store data and pointer
 class ListNode:
     def __init__(self):
@@ -27,7 +28,7 @@ def insert_node(list, start_pointer, free_list_ptr, new_item):
         new_node_ptr = free_list_ptr
         list[new_node_ptr].data = new_item
         free_list_ptr = list[free_list_ptr].pointer
-            # find insertion point
+        # find insertion point
         previous_node_ptr = null_pointer
         this_node_ptr = start_pointer   # start at beginning of list
         while this_node_ptr != null_pointer and list[this_node_ptr].data < new_item:
@@ -49,7 +50,7 @@ def insert_node(list, start_pointer, free_list_ptr, new_item):
     return list, start_pointer, free_list_ptr
 
 
-def find_node(list, start_pointer, data_item): # returns pointer to node
+def find_node(list, start_pointer, data_item):  # returns pointer to node
     current_node_ptr = start_pointer    # start at beginning of list
     while current_node_ptr != null_pointer and list[current_node_ptr].data != data_item:
         # not end of list, item not found
@@ -60,8 +61,10 @@ def find_node(list, start_pointer, data_item): # returns pointer to node
 
 def delete_node(list, start_pointer, free_list_ptr, data_item):
     this_node_ptr = start_pointer       # start at beginning of list
-    while this_node_ptr != null_pointer and list[this_node_ptr].data_item:
+    while this_node_ptr != null_pointer and list[this_node_ptr].data != data_item:
+        # while not end of list and item not found
         previous_node_ptr = this_node_ptr   # remember this node
+        # follow the pointer to the next node
         this_node_ptr = list[this_node_ptr].pointer
     if this_node_ptr != null_pointer:       # node exists in list
         if this_node_ptr == start_pointer:  # first node to be deleted
@@ -78,9 +81,10 @@ def delete_node(list, start_pointer, free_list_ptr, data_item):
 def output_all_nodes(list, start_pointer):
     current_node_ptr = start_pointer    # start at beginning of list
     if start_pointer == null_pointer:
-        print("no data in list")
+        print("No data in list")
     while current_node_ptr != null_pointer:     # while not end of list
         print(current_node_ptr, " ", list[current_node_ptr].data)
+        # follow the pointer to the next node
         current_node_ptr = list[current_node_ptr].pointer
 
 
