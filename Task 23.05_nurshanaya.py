@@ -1,6 +1,9 @@
+# Linked list
+
+# NullPointer should be set to -1 if using array element with index 0
 null_pointer = -1
 
-
+# Declare record type to store data and pointer
 class ListNode:
     def __init__(self):
         self.data = ""
@@ -9,28 +12,36 @@ class ListNode:
 
 def initialise_list():
     list = [ListNode() for i in range(8)]
-    start_pointer = null_pointer
-    free_list_ptr = 0
-    for Index in range(7):
+    start_pointer = null_pointer    # set start pointer
+    free_list_ptr = 0               # set starting position of free list
+    for Index in range(7):          # link all nodes to make free list
         list[Index].pointer = Index + 1
-    list[7].pointer = null_pointer
+    list[7].pointer = null_pointer  # last node of free list
     return list, start_pointer, free_list_ptr
 
 
 def insert_node(list, start_pointer, free_list_ptr, new_item):
     if free_list_ptr != null_pointer:
+        # there is space in the array
+        # take node from free list and store data item
         new_node_ptr = free_list_ptr
         list[new_node_ptr].data = new_item
         free_list_ptr = list[free_list_ptr].pointer
+            # find insertion point
         previous_node_ptr = null_pointer
-        this_node_ptr = start_pointer
+        this_node_ptr = start_pointer   # start at beginning of list
         while this_node_ptr != null_pointer and list[this_node_ptr].data < new_item:
-            previous_node_ptr = this_node_ptr
+
+            # while not end of list
+            previous_node_ptr = this_node_ptr   # remember this node
+            # follow the pointer to the next node
             this_node_ptr = list[this_node_ptr].pointer
+
         if previous_node_ptr == null_pointer:
+            # insert new node at start of list
             list[new_node_ptr].pointer = start_pointer
             start_pointer = new_node_ptr
-        else:
+        else:   # insert new node between previous node and this node
             list[new_node_ptr].pointer = list[previous_node_ptr].pointer
             list[previous_node_ptr].pointer = new_node_ptr
     else:
@@ -38,20 +49,22 @@ def insert_node(list, start_pointer, free_list_ptr, new_item):
     return list, start_pointer, free_list_ptr
 
 
-def find_node(list, start_pointer, data_item):
-    current_node_ptr = start_pointer
+def find_node(list, start_pointer, data_item): # returns pointer to node
+    current_node_ptr = start_pointer    # start at beginning of list
     while current_node_ptr != null_pointer and list[current_node_ptr].data != data_item:
+        # not end of list, item not found
+        # follow the pointer to the next node
         current_node_ptr = list[current_node_ptr].pointer
-    return current_node_ptr
+    return current_node_ptr     # return NullPointer if item not found
 
 
 def delete_node(list, start_pointer, free_list_ptr, data_item):
-    this_node_ptr = start_pointer
+    this_node_ptr = start_pointer       # start at beginning of list
     while this_node_ptr != null_pointer and list[this_node_ptr].data_item:
-        previous_node_ptr = this_node_ptr
+        previous_node_ptr = this_node_ptr   # remember this node
         this_node_ptr = list[this_node_ptr].pointer
-    if this_node_ptr != null_pointer:
-        if this_node_ptr == start_pointer:
+    if this_node_ptr != null_pointer:       # node exists in list
+        if this_node_ptr == start_pointer:  # first node to be deleted
             start_pointer == list[start_pointer].pointer
         else:
             list[previous_node_ptr].pointer = list[this_node_ptr].pointer
@@ -63,10 +76,10 @@ def delete_node(list, start_pointer, free_list_ptr, data_item):
 
 
 def output_all_nodes(list, start_pointer):
-    current_node_ptr = start_pointer
+    current_node_ptr = start_pointer    # start at beginning of list
     if start_pointer == null_pointer:
         print("no data in list")
-    while current_node_ptr != null_pointer:
+    while current_node_ptr != null_pointer:     # while not end of list
         print(current_node_ptr, " ", list[current_node_ptr].data)
         current_node_ptr = list[current_node_ptr].pointer
 
