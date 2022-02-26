@@ -96,6 +96,8 @@ def get_option():
     print("5: end program")
     option = input("Enter your choice: ")
     return option
+
+
 list, start_pointer, free_list_ptr = initialise_list()
 
 option = get_option()

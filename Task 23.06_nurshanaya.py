@@ -65,3 +65,35 @@ def traverse_tree(tree, root_pointer):
         traverse_tree(tree, tree[root_pointer].left_pointer)
         print(tree[root_pointer].data)
         traverse_tree(tree, tree[root_pointer].right_pointer)
+
+
+def get_option():
+    print("1: add data")
+    print("2: find data")
+    print("3: traverse tree")
+    print("4: end program")
+    option = input("Enter your choice: ")
+    return option
+
+
+tree, root_pointer, free_ptr = initialise_tree()
+
+option = get_option()
+while option != "4":
+    if option == "1":
+        data = input("Enter the value: ")
+        tree, root_pointer, free_ptr = insert_node(tree, root_pointer, free_ptr, data)
+        traverse_tree(tree, root_pointer)
+    elif option == "2":
+        data = input("Enter search value: ")
+        this_node_ptr = find_node(tree, root_pointer, data)
+        if this_node_ptr == null_pointer:
+            print("Value not found")
+        else:
+            print("value found at ", this_node_ptr)
+        print(root_pointer, free_ptr)
+        for i in range(8):
+            print(1, " ", tree[i].left_pointer, " ", tree[i].data, " ", tree[i].right_pointer)
+    elif option == "3":
+        traverse_tree(tree, root_pointer)
+    option = get_option()
