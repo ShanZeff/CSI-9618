@@ -14,27 +14,31 @@ class TreeNode:
 
 def initialise_tree():
     tree = [TreeNode() for i in range(8)]
-    root_pointer = null_pointer
-    free_ptr = 0
-    for index in range(7):
+    root_pointer = null_pointer     # set Root pointer
+    free_ptr = 0                    # set starting position of free list
+    for index in range(7):          # link all nodes to make free list
         tree[index].left_pointer = index + 1
     return tree, root_pointer, free_ptr
 
 
 def insert_node(tree, root_pointer, free_ptr, new_item):
     if free_ptr != null_pointer:
+        # there is space in the array
+        # take node from free list and store data item
         new_node_ptr = free_ptr
         tree[new_node_ptr].data = new_item
         free_ptr = tree[free_ptr].left_pointer
         tree[new_node_ptr].data = new_item
         free_ptr = tree[free_ptr].left_pointer
         tree[new_node_ptr].left_pointer = null_pointer
+        # check if empty tree
         if root_pointer == null_pointer:
+            # insert new node at root
             root_pointer = new_node_ptr
-        else:
+        else:   # find insertion point
             this_node_ptr = root_pointer
-            while this_node_ptr != null_pointer:
-                previous_node_ptr = this_node_ptr
+            while this_node_ptr != null_pointer:    # while not a leaf node
+                previous_node_ptr = this_node_ptr   # remember this node
                 if tree[this_node_ptr].data > new_item:
                     turned_left = True
                     this_node_ptr = tree[this_node_ptr].left_pointer
@@ -51,12 +55,13 @@ def insert_node(tree, root_pointer, free_ptr, new_item):
 
 
 def find_node(tree, root_pointer, search_item):
-    this_node_ptr = root_pointer
+    this_node_ptr = root_pointer    # start at the root of the tree
     while this_node_ptr != null_pointer and tree[this_node_ptr].data != search_item:
+        # while there is a pointer to follow and search item not found
         if tree[this_node_ptr].data > search_item:
-            this_node_ptr = tree[this_node_ptr].left_pointer
+            this_node_ptr = tree[this_node_ptr].left_pointer    # follow left pointer
         else:
-            this_node_ptr = tree[this_node_ptr].right_pointer
+            this_node_ptr = tree[this_node_ptr].right_pointer   # follow right pointer
     return this_node_ptr
 
 
