@@ -1,8 +1,9 @@
 # Stack
-
+# NullPointer should be set to -1 if using array element with index 0
 null_pointer = -1
 
 
+# Declare record type to store data and pointer
 class Node:
     def __init__(self):
         self.data = ""
@@ -11,19 +12,22 @@ class Node:
 
 def initialise_stack():
     Stack = [Node() for i in range(8)]
-    TopOfStack = null_pointer
-    FreeListPtr = 0
-    for index in range(7):
+    TopOfStack = null_pointer               # set start pointer
+    FreeListPtr = 0                         # set starting position of free list
+    for index in range(7):                  # link all nodes to make free list
         Stack[index].pointer = index + 1
-    Stack[7].pointer = null_pointer
+    Stack[7].pointer = null_pointer         # last node of free list
     return Stack, TopOfStack, FreeListPtr
 
 
 def push(Stack, TopOfStack, FreeListPtr, new_item):
     if FreeListPtr != null_pointer:
+        # there is space in the array
+        # take node from free list and store data item
         NewNodePtr = FreeListPtr
         Stack[NewNodePtr].data = new_item
         FreeListPtr = Stack[FreeListPtr].pointer
+        # insert new node at top of stack
         Stack[NewNodePtr].pointer = TopOfStack
         TopOfStack = NewNodePtr
     else:
@@ -45,11 +49,12 @@ def pop(Stack, TopOfStack, FreeListPtr):
 
 
 def output_all_nodes(Stack, TopOfStack):
-    CurrentNodePtr = TopOfStack
+    CurrentNodePtr = TopOfStack                     # start at beginning of list
     if TopOfStack == null_pointer:
         print("No data on stack")
-    while CurrentNodePtr != null_pointer:
+    while CurrentNodePtr != null_pointer:           # while not end of list
         print(CurrentNodePtr, " ", Stack[CurrentNodePtr].data)
+        # follow the pointer to the next node
         CurrentNodePtr = Stack[CurrentNodePtr].pointer
 
 
