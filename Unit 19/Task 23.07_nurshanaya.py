@@ -2,7 +2,7 @@
 
 null_pointer = -1
 
-class Node:
+class node:
     def __init__(self):
         self.data = ""
         self.pointer = null_pointer
