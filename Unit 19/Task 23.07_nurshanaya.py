@@ -23,8 +23,8 @@ def push(Stack, TopOfStack, FreeListPtr, new_item):
     if FreeListPtr != null_pointer:
         NewNodePtr = FreeListPtr
         Stack[NewNodePtr].data = new_item
-        FreeListPtr = stack[FreeListPtr].pointer
-        stack[NewNodePtr], pointer = TopOfStack
+        FreeListPtr = Stack[FreeListPtr].pointer
+        Stack[NewNodePtr].pointer = TopOfStack
         TopOfStack = NewNodePtr
     else:
         print("no space for more data")
@@ -37,20 +37,20 @@ def pop(Stack, TopOfStack, FreeListPtr):
         value = ""
     else:
         value = Stack[TopOfStack].data
-        this_node_ptr = TopOfStack
+        ThisNodePtr = TopOfStack
         TopOfStack = Stack[TopOfStack].pointer
-        Stack[this_node_ptr].pointer = FreeListPtr
-        FreeListPtr = this_node_ptr
+        Stack[ThisNodePtr].pointer = FreeListPtr
+        FreeListPtr = ThisNodePtr
     return Stack, TopOfStack, FreeListPtr, value
 
 
 def output_all_nodes(Stack, TopOfStack):
-    current_node_ptr = TopOfStack
+    CurrentNodePtr = TopOfStack
     if TopOfStack == null_pointer:
         print("No data on stack")
-    while current_node_ptr != null_pointer:
-        print(current_node_ptr, " ", Stack[current_node_ptr].data)
-        current_node_ptr = Stack[current_node_ptr].pointer
+    while CurrentNodePtr != null_pointer:
+        print(CurrentNodePtr, " ", Stack[CurrentNodePtr].data)
+        CurrentNodePtr = Stack[CurrentNodePtr].pointer
 
 
 def get_option():
@@ -62,22 +62,22 @@ def get_option():
     return option
 
 
-stack, top_of_stack, free_list_ptr = initialise_stack()
+Stack, TopOfStack, FreeListPtr = initialise_stack()
 
 
 option = get_option()
 while option != "4":
     if option == "1":
         data = input("Enter the value: ")
-        stack, top_of_stack, free_list_ptr = push(stack, top_of_stack, free_list_ptr, data)
-        output_all_nodes(stack, top_of_stack)
+        Stack, TopOfStack, FreeListPtr = push(Stack, TopOfStack, FreeListPtr, data)
+        output_all_nodes(Stack, TopOfStack)
     elif option == "2":
-        stack, top_of_stack, free_list_ptr, value = pop(stack, top_of_stack, free_list_ptr)
+        Stack, TopOfStack, FreeListPtr, value = pop(Stack, TopOfStack, FreeListPtr)
         print("Data popped: ", value)
-        output_all_nodes(stack, top_of_stack)
+        output_all_nodes(Stack, TopOfStack)
     elif option == "3":
-        output_all_nodes(stack, top_of_stack)
-        print(top_of_stack, free_list_ptr)
+        output_all_nodes(Stack, TopOfStack)
+        print(TopOfStack, FreeListPtr)
         for i in range(8):
-            print(i, " ", stack[i].data, " ", stack[i].pointer)
+            print(i, " ", Stack[i].data, " ", Stack[i].pointer)
     option = get_option()
