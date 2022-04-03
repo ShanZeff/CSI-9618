@@ -88,7 +88,9 @@ while Response != "4":
         Queue, FrontOfQueue, EndOfQueue, NumberInQueue, Item = RemoveFromQueue(Queue, FrontOfQueue, EndOfQueue, NumberInQueue)
         print("data leaving queue: ", Item)
         OutputQueue(Queue, FrontOfQueue, NumberInQueue)
+    elif Response == "3":
+        OutputQueue(Queue, FrontOfQueue, NumberInQueue)
         print(FrontOfQueue, EndOfQueue, NumberInQueue)
         for i in range(MAXQUEUESIZE):
             print(i, " ", Queue[i])
-        Response = GetOption()
+    Response = GetOption()
