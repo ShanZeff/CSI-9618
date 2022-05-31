@@ -7,7 +7,7 @@ import pickle   # this library is required to create binary files
 from datetime import date
 RECORDSIZE = 50     # 20 + 10 + 8 + 4 + 8
 class CarRecord:
-    def __int__(self):
+    def __init__(self):
         VehicleID = "dummy"
         VehicleID = VehicleID.ljust(20)
         self.VehicleID = VehicleID.encode("utf-8")
