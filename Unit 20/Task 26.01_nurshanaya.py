@@ -4,12 +4,16 @@
 # 2. Write another program to read the file and display the
 #    contents on screen
 
+# For exception line 36
+# Record Number?: 0 will cause an error w/o exception
+# bcuz the file has reached its end w no content
+
 import pickle   # this library is required to create binary files
 from datetime import date
 
 class CarRecord:
     def __init__(self):
-        self.VehicleID = " "
+        self.VehicleID = "dummy"
         self.Registration = " "
         self.DateOfRegistration = date(1990, 1, 1)
         self.EngineSize = 0
@@ -63,12 +67,3 @@ def main():
 
 
 main()
-
-
-# exception handling
-EoF = False
-while not EoF:
-    try:
-        Car.append(pickle.load(CarFile))
-    except:
-        EoF = True
