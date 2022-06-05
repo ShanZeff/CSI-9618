@@ -135,3 +135,65 @@ def DisplayMenu():
 
 
 # Main program ************************************************************
+def main():
+    Finish = False
+    NextBorrowerID = 1
+    NextBookID = 1
+    NextCD_ID = 1
+
+    while Finish == False:
+        DisplayMenu()
+        MenuChoice = int(input())
+        if MenuChoice == 1:                 # new borrower
+            BName = input("Name: ")
+            Email = input("Email address: ")
+            BorrowerID = NextBorrowerID
+            NextBorrowerID = NextBorrowerID + 1
+            Borrower = TBorrower(BName, Email, BorrowerID)
+        elif MenuChoice == 2:               # new book
+            Title = input("Title: ")
+            Author = input("Author: ")
+            ItemID = NextBookID
+            NextBookID = NextBookID + 1
+            Book = TBook(Title, Author, ItemID)
+        elif MenuChoice == 3:               # new CD
+            Title = input("Title: ")
+            Artist = input("Artist: ")
+            ItemID = NextCD_ID
+            NextCD_ID = NextCD_ID + 1
+            CD = T_CD(Title, Artist, ItemID)
+        elif MenuChoice == 4:               # borrow book
+            BorrowerID = input("Borrower ID: ")
+            ItemID = input("Book ID: ")
+            Book.Borrowing(ItemID, Borrower)
+        elif MenuChoice == 5:               # return book
+            BorrowerID = input("Borrower ID: ")
+            ItemID = input("Book ID: ")
+            Book.Returning(ItemID, Borrower)
+        elif MenuChoice == 6:               # borrow CD
+            BorrowerID = input("Borrower ID: ")
+            ItemID = input("CD ID: ")
+            CD.Borrowing(ItemID, Borrower)
+        elif MenuChoice == 7:               # return CD
+            BorrowerID = input("Borrower ID: ")
+            ItemID = input("CD ID: ")
+            CD.Returning(ItemID, Borrower)
+        elif MenuChoice == 8:               # request book
+            BorrowerID = input("Borrower ID: ")
+            ItemID = input("Book ID: ")
+            Book.RequestBook(ItemID, Borrower)
+        elif MenuChoice == 9:               # print all details
+            print("Borrower Details")
+            Borrower.PrintDetails()
+            print("Book Details")
+            Book.PrintDetails()
+            print("CD Details")
+            CD.PrintDetails()
+        elif MenuChoice == 99:              # end program
+            Finish = True
+        else:
+            print("Wrong input")
+    input()
+
+
+main()
