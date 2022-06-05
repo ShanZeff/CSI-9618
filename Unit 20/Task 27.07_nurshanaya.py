@@ -76,7 +76,7 @@ class TLibraryItem:
 
     def PrintDetails(self):
         print(self.__Title, ';', self.__Author__Artist, end=' ')
-        print(self.__ItemID, ';', self.__OnLoan, ';', end=' ')
+        print(';', self.__ItemID, ';', self.__OnLoan, ';', end=' ')
         print(self.__BorrowerID, ';', self.__DueDate)
 
 
