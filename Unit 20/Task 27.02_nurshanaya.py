@@ -5,12 +5,12 @@
 
 import datetime
 class LibraryItem:
-    def __init__(self, t, a, i):  # initialiser method
-        self.__Title = t
-        self.__Author__Artist = a
-        self.__ItemID = i
-        self.__OnLoan = False
-        self.__DueDate = datetime.date.today()
+    def __init__(self, t, a, i):    # initialiser method
+        self.__Title = t            # DECLARE Title             : STRING
+        self.__Author__Artist = a   # DECLARE Author__Artist    : STRING
+        self.__ItemID = i           # DECLARE ItemID            : INTEGER
+        self.__OnLoan = False       # DECLARE OnLoan            : BOOLEAN
+        self.__DueDate = datetime.date.today()  # DECLARE DueDate: DATE
 
     def GetTitle(self):
         return self.__Title
