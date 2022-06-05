@@ -43,17 +43,23 @@ class Book(LibraryItem):
     def __init__(self, t, a, i):  # initialiser method
         LibraryItem.__init__(self, t, a, i)
         self.__IsRequested = False
+        self.__RequestedBy = 0
 
     def GetIsRequested(self):
         return self.__IsRequested
 
-    def SetIsRequested(self):
+    def SetIsRequested(self, b):
         self.__IsRequested = True
+        self.__RequestedBy = b
 
+    # print details method for Book
     def PrintDetails(self):
         print("Book Details")
         LibraryItem.PrintDetails(self)
-        print(self.__IsRequested)
+        if self.__IsRequested:
+            print("Requested by", self.__RequestedBy)
+        else:
+            print("No requests")
 
 
 class CD(LibraryItem):
@@ -75,7 +81,8 @@ class CD(LibraryItem):
 
 def main():
     ThisBook = Book("Computing", "Sylvia", 1234)
-    ThisBook.PrintDetails()     # just personally added this
+    ThisBook.SetIsRequested(345)
+    ThisBook.PrintDetails()
     ThisCD = CD("Let it be", "Beatles", 2345)
     ThisCD.PrintDetails()
 

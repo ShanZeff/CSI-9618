@@ -75,7 +75,7 @@ class CD(LibraryItem):
 
 def main():
     ThisBook = Book("Computing", "Sylvia", 1234)
-    ThisBook.PrintDetails()     # just personally added this
+    ThisBook.PrintDetails()
     ThisCD = CD("Let it be", "Beatles", 2345)
     ThisCD.PrintDetails()
 
