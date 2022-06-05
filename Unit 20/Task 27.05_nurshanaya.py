@@ -1,6 +1,5 @@
-# Task 27.04 Polymorphism
-# From Task 27.02. Re-define the PrintDetails method
-# for the Book class and the CD class. Test your code.
+# Task 27.05 Polymorphism
+# From 27.03, add another attribute BorrowerID to the LibraryItem class.
 
 import datetime
 class LibraryItem:
@@ -50,11 +49,6 @@ class Book(LibraryItem):
     def SetIsRequested(self):
         self.__IsRequested = True
 
-    def PrintDetails(self):
-        print("Book Details")
-        LibraryItem.PrintDetails(self)
-        print(self.__IsRequested)
-
 
 class CD(LibraryItem):
     def __init__(self, t, a, i):
@@ -67,17 +61,42 @@ class CD(LibraryItem):
     def SetGenre(self, g):
         self.__Genre = g
 
+
+class Borrower:
+    def __init__(self, n, e, b):
+        self.__BorrowerName = n     # DECLARE BorrowerName  : STRING
+        self.__EmailAddress = e     # DECLARE EmailAddress  : STRING
+        self.__BorrowerID = b       # DECLARE BorrowerID    : INTEGER
+        self.__ItemsOnLoan = 0      # DECLARE ItemsOnLoan   : INTEGER
+
+    def GetBorrowerName(self):
+        return self.__BorrowerName
+
+    def GetEmailAddress(self):
+        return self.__EmailAddress
+
+    def GetBorrowerID(self):
+        return self.__BorrowerID
+
+    def GetItemsOnLoan(self):
+        return self.__ItemsOnLoan
+
+    def UpdateItemsOnLoan(self, n):
+        self.__ItemsOnLoan += n
+
     def PrintDetails(self):
-        print("CD Details")
-        LibraryItem.PrintDetails(self)
-        print(self.__Genre)
+        print("Borrower         : ", self.__BorrowerName)
+        print("ID               : ", self.__BorrowerID)
+        print("Email            : ", self.__EmailAddress)
+        print("Items on  loan   : ", self.__ItemsOnLoan)
 
 
 def main():
-    ThisBook = Book("Computing", "Sylvia", 1234)
-    ThisBook.PrintDetails()     # just personally added this
-    ThisCD = CD("Let it be", "Beatles", 2345)
-    ThisCD.PrintDetails()
+    NewBorrower = Borrower("Sylvia", "adc@cie", 123)
+    NewBorrower.UpdateItemsOnLoan(3)
+    NewBorrower.PrintDetails()
+    NewBorrower.UpdateItemsOnLoan(-1)
+    NewBorrower.PrintDetails()
 
 
 main()
