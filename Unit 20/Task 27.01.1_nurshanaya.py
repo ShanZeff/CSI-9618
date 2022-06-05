@@ -4,11 +4,11 @@
 
 class Car:
     def __init__(self, n, e):   # constructor
-        self.__VehicleID = n
-        self.__Registration = ""
-        self.__DateOfRegistration = None
-        self.__EngineSize = e
-        self.__PurchasePrice = 0.0
+        self.__VehicleID = n        # DECLARE VehicleID     : STRING
+        self.__Registration = ""    # DECLARE Registration 	: STRING
+        self.__DateOfRegistration = None    # DECLARE DateOfRegistration : DATE
+        self.__EngineSize = e       # DECLARE EngineSize	: INTEGER
+        self.__PurchasePrice = 0.0  # DECLARE PurchasePrice : CURRENCY
 
     def SetPurchasePrice(self, p):
         self.__PurchasePrice = p

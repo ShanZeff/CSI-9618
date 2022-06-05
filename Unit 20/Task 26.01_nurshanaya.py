@@ -13,11 +13,11 @@ from datetime import date
 
 class CarRecord:
     def __init__(self):
-        self.VehicleID = "dummy"
-        self.Registration = " "
-        self.DateOfRegistration = date(1990, 1, 1)
-        self.EngineSize = 0
-        self.PurchasePrice = 0.0
+        self.VehicleID = "dummy"    # DECLARE VehicleID     : STRING
+        self.Registration = " "     # DECLARE Registration  : STRING
+        self.DateOfRegistration = date(1990, 1, 1)  # DECLARE DateOfRegistration : DATE
+        self.EngineSize = 0         # DECLARE EngineSize    : INTEGER
+        self.PurchasePrice = 0.0    # DECLARE PurchasePrice : CURRENCY
 
 
 def SaveData(Car):
@@ -51,8 +51,7 @@ def main():
     ThisCar = CarRecord()
     Car = [ThisCar for i in range(100)]     # only run this 1st time
     SaveData(Car)           # only run this 1st time
-    Car = LoadData()        # from existing file
-    # OutputRecords(Car)
+    Car = LoadData()        # from existing file OutputRecords(Car)
     # add more records
     i = int(input("Record Number?: "))
     while i != 0:

@@ -8,19 +8,25 @@ from datetime import date
 RECORDSIZE = 50     # 20 + 10 + 8 + 4 + 8
 class CarRecord:
     def __init__(self):
-        VehicleID = "dummy"
+        VehicleID = "dummy"         # DECLARE VehicleID     : STRING
         VehicleID = VehicleID.ljust(20)
         self.VehicleID = VehicleID.encode("utf-8")
-        Registration = " "
+        Registration = " "          # DECLARE Registration 	: STRING
         Registration = Registration.ljust(10)
         self.Registration = Registration.encode("utf-8")
-        self.DateOfRegistration = date(1990, 1, 1)
-        self.EngineSize = 0
-        self.PurchasePrice = 0.0
+        self.DateOfRegistration = date(1990, 1, 1)  # DECLARE DateOfRegistration : DATE
+        self.EngineSize = 0         # DECLARE EngineSize	: INTEGER
+        self.PurchasePrice = 0.0    # DECLARE PurchasePrice : CURRENCY
 
 
 def InitialiseFile():
     CarFile = open("CarFile.DAT", "wb")     # file for car records
+    EoF = False         # exception handling
+    while not EoF:      # check for end of file
+        try:
+            Car.append(pickle.load(CarFile))  # append record from file to end of list
+        except:
+            EoF = True
     for i in range(100):    # loop for each array element
         Address = i * RECORDSIZE + 1
         CarFile.seek(Address, 0)

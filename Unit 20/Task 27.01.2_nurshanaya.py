@@ -5,9 +5,9 @@
 from datetime import *
 class Company:
     def __init__(self, n, e):   # constructor
-        self.__CompanyName = n
-        self.__EmailAddress = e
-        self.__DateOfLastContact = None
+        self.__CompanyName = n              # DECLARE CompanyName   	: STRING
+        self.__EmailAddress = e             # DECLARE EmailAddress  	: STRING
+        self.__DateOfLastContact = None     # DECLARE DateOfLastContact	: DATE
 
     def SetDateOfLastContact(self, d):
         self.__DateOfLastContact = d
