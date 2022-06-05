@@ -9,6 +9,7 @@ class LibraryItem:
         self.__ItemID = i           # DECLARE ItemID            : INTEGER
         self.__OnLoan = False       # DECLARE OnLoan            : BOOLEAN
         self.__DueDate = datetime.date.today()  # DECLARE DueDate: DATE
+        self.__BorrowerID = 0       # DECLARE BorrowerID        : INTEGER
 
     def GetTitle(self):
         return self.__Title
@@ -25,17 +26,18 @@ class LibraryItem:
     def GetDueDate(self):
         return self.__DueDate
 
-    def Borrowing(self):
+    def Borrowing(self, b):
         self.__OnLoan = True
         self.__DueDate = self.__DueDate + datetime.timedelta(weeks=3)
+        self.__BorrowerID = b
 
     def Returning(self):
         self.__OnLoan = False
 
     def PrintDetails(self):
-        print(self.__Title, ' ; ', self.__Author__Artist, end='')
-        print(' ; ', self.__ItemID, ' ; ', self.__OnLoan, end='')
-        print(' ; ', self.__DueDate)
+        print(self.__Title, ' ; ', self.__Author__Artist, ' ; ', end='')
+        print(self.__ItemID, ' ; ', self.__OnLoan)
+        print(self.__DueDate, ' ; Borrower: ', self.__BorrowerID)
 
 
 class Book(LibraryItem):
@@ -92,10 +94,12 @@ class Borrower:
 
 
 def main():
-    NewBorrower = Borrower("Sylvia", "adc@cie", 123)
-    NewBorrower.UpdateItemsOnLoan(3)
-    NewBorrower.PrintDetails()
-    NewBorrower.UpdateItemsOnLoan(-1)
+    ThisBook = Book("Computing", "Sylvia", 1234)
+    ThisBook.PrintDetails()
+    NewBorrower = Borrower("Fred", "adc@cie", 123)
+    ThisBook.Borrowing(123)
+    NewBorrower.UpdateItemsOnLoan(1)
+    ThisBook.PrintDetails()
     NewBorrower.PrintDetails()
 
 
