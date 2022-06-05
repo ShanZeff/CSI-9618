@@ -80,3 +80,58 @@ class TLibraryItem:
 
 
 # Book class ***************************************************************
+class TBook(TLibraryItem):
+    def __init__(self, t, a, i):
+        TLibraryItem.__init__(self, t, a, i)
+        self.__IsRequested = False
+        self.__RequestedBy = 0
+
+    def GetIsRequested(self):
+        return self.__IsRequested
+
+    def GetRequestedBy(self):
+        return self.__RequestedBy
+
+    def RequestBook(self, i, x):
+        self.__IsRequested = True
+        self.__RequestedBy = x.GetBorrowerID()
+
+    def PrintDetails(self):
+        TLibraryItem.PrintDetails(self)
+        print(self.__IsRequested, ';', self.__RequestedBy)
+
+
+# CD class *****************************************************************
+class T_CD(TLibraryItem):
+    def __init__(self, t, a, i):
+        TLibraryItem.__init__(self, t, a, i)
+        self.__Genre = ""
+
+    def GetGenre(self):
+        return self.__Genre
+
+    def SetGenre(self, g):
+        self.__Genre = g
+
+    def PrintDetails(self):
+        TLibraryItem.PrintDetails(self)
+        print(self.__Genre)
+
+
+# Display menu *************************************************************
+def DisplayMenu():
+    print("1 - Add a new borrower")
+    print("2 - Add a new book")
+    print("3 - Add a new CD")
+    print("4 - Borrow book")
+    print("5 - Return book")
+    print("6 - Borrow CD")
+    print("7 - Return CD")
+    print("8 - Request book")
+    print("9 - Print all details")
+    print("99 - Exit program")
+    print(" ")
+    print("Enter your menu choice: ")
+
+
+# Main program ************************************************************
