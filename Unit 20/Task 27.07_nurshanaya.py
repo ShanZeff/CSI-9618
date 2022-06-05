@@ -1,6 +1,7 @@
 # Task 27.07 Polymorphism
-# From 27.06. Write the program to implement a library system.
+# Write the program to implement a library system.
 # Write code to provide the user with a menu option.
+# It's actually from scratch, not from 27.06.
 
 import datetime
 
@@ -28,7 +29,7 @@ class TBorrower:
         self.__ItemsOnLoan = self.__ItemsOnLoan + n
 
     def PrintDetails(self):
-        print(self.__BorrowerName, ';', self.__BorrowerID, ';', end='')
+        print(self.__BorrowerName, ';', self.__BorrowerID, ';', end=' ')
         print(self.__EmailAddress, ';', self.__ItemsOnLoan)
 
 
