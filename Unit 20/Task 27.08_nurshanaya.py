@@ -8,7 +8,7 @@ class Assessment:
 
 
 class Course:
-    def __init__(self, t, m):
+    def __init__(self, t, m):   # sets up a new course
         self.__CourseTitle = t
         self.__MaxStudents = m
         self.__NumberOfLessons = 0
@@ -40,13 +40,15 @@ class Lesson:
 
 
 def main():
-    MyCourse = Course("Computing", 10)
-    MyCourse.AddAssessment("Programming", 100)
+    MyCourse = Course("Computing", 10)          # sets up a new course
+    MyCourse.AddAssessment("Programming", 100)  # adds an assignment
 
+    # add 3 lessons
     MyCourse.AddLesson("Problem Solving", 60, False)
     MyCourse.AddLesson("Programming", 120, True)
     MyCourse.AddLesson("Theory", 60, False)
 
+    # check it all works
     MyCourse.OutputCourseDetails()
 
 
