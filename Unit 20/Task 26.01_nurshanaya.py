@@ -48,8 +48,8 @@ def OutputRecords(Car):
 
 
 def main():
-    ThisCar = CarRecord()
-    Car = [ThisCar for i in range(100)]     # only run this 1st time
+    # ThisCar = CarRecord()
+    Car = [CarRecord() for i in range(100)]     # only run this 1st time
     SaveData(Car)           # only run this 1st time
     Car = LoadData()        # from existing file OutputRecords(Car)
     # add more records

@@ -1,4 +1,6 @@
-#
+# Customer details in binary file of records
+# CustomerID, CustomerName, TelNumber, TotalOrders
+# 1) write variable declaration. 2) declare array
 
 import pickle
 class CustomerRecord:
@@ -39,6 +41,7 @@ def SaveData(CustomerData):
 
 def main():
     CustomerData = [CustomerRecord() for i in range(1000)]
+    SaveData(CustomerData)
 
 
 main()
