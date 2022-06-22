@@ -1,10 +1,3 @@
-# NumberOfItems = 9
-# TheData = [20, 3, 4, 8, 12, 99, 4, 26, 4]
-
-# def InsertionData(TheData):
-#    for Count in range(FirstElement, NumberOfItems - 1):
-#        Data
-
 TheData = [20, 3, 4, 8, 12, 99, 4, 26, 4]
 
 def InsertionSort(TheData):
@@ -26,22 +19,21 @@ def PrintArray(TheData):
         print(TheData[Count])
 
 
+# print("Before")
+# PrintArray(TheData)
+# InsertionSort(TheData)
+# print("After")
+# PrintArray(TheData)
+
+
 def Search(TheData):
     NumberInput = int(input("Enter a whole number: "))
     for Count in range(0, len(TheData)):
         if TheData[Count] == NumberInput:
             print("Found")
             return True
-    print("False")
+    print("Not Found")
     return False
 
 
-def main():
-    print("Before")
-    PrintArray(TheData)
-    InsertionSort(TheData)
-    print("After")
-    PrintArray(TheData)
-
-
-main()
+Search(TheData)
