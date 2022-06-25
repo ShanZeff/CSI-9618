@@ -22,6 +22,8 @@ class HiddenBox:
 
 
 TheBoxes = [HiddenBox("", "", "", "") for i in range(0, 10000)]
+NumBoxes = 0
+
 
 def NewBox(TheBoxes, NumBoxes):
     BoxName = input("Enter the name of the box: ")
@@ -33,6 +35,7 @@ def NewBox(TheBoxes, NumBoxes):
 
 
 NumBoxes = NewBox(TheBoxes, NumBoxes)
+
 
 class PuzzleBox(HiddenBox):
     # __PuzzleText String
