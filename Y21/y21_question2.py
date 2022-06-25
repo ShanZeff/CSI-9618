@@ -29,12 +29,10 @@ def NewBox(TheBoxes, NumBoxes):
     DateHidden = input("Enter the date the box was hidden: ")
     GameLocation = input("Enter the location of the box: ")
     TheBoxes[NumBoxes] = HiddenBox(BoxName, Creator, DateHidden, GameLocation)
-
-    NumBoxes = NewBox(TheBoxes, NumBoxes)
     return NumBoxes + 1
 
 
-NewBox(TheBoxes, NumBoxes)
+NumBoxes = NewBox(TheBoxes, NumBoxes)
 
 class PuzzleBox(HiddenBox):
     # __PuzzleText String
