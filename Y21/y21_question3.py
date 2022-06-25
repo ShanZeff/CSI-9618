@@ -14,8 +14,7 @@ def Enqueue(DataToAdd, QueueData, EndP):
 
 
 def ReadFile(QueueData, StartP, EndP):
-    Path = "C:/Users/shnaya/PycharmProjects/CSI-9618/Y21/" + input("Enter a filename: ")
-    FileName = os.path.isfile(Path)
+    FileName = input("Enter a filename: ")
     if os.path.isfile(FileName):
         f = open(FileName, "r")
         Flag = True
@@ -23,7 +22,7 @@ def ReadFile(QueueData, StartP, EndP):
         while Flag == True and DataToInsert != null:
             Flag, EndP = Enqueue(QueueData, EndP)
             DataToInsert = (f.readline()).strip()
-        if not Flag:
+        if Flag == False:
             f.close()
             return 1, EndP
         else:
