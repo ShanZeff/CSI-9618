@@ -10,10 +10,30 @@ class TreasureChest:
         self.__Answer = AnswerP
         self.__Points = PointsP
 
+    def GetQuestion(self):
+        return self.__Question
+
+    def CheckAnswer(self, AnswerP):
+        if int(self.__Answer) == AnswerP:
+            return True
+        else:
+            return False
+
+    def GetPoints(self, Attempts):
+        if Attempts == 1:
+            return int(self.__Points)
+        elif Attempts == 2:
+            return int(self__Points) // 2
+        elif Attempts == 3 or Attempts == 4:
+            return int(self.__Points) // 4
+        else:
+            return 0
+
 
 # ArrayTreasure(5) as TreasureChest
+ArrayTreasure = [TreasureChest(QuestionP, AnswerP, PointsP) for i in range(5)]
 def ReadData():
-    Filename = "TreasureChestData.txt"
+    Filename = "C:/Users/shnaya/Desktop/For OOP/9618_s21_sf_41/TreasureChestData.txt"
     try:
         File = open(Filename, "r")
         DataFetched = (File.readline()).strip()
@@ -23,31 +43,9 @@ def ReadData():
             Points = (File.readline()).strip()
             ArrayTreasure.append(TreasureChest(Question, Answer, Points))
             DataFetched = (File.readline()).strip()
-        file.close()
+        File.close()
     except IOError:
         print("Could not find file")
-
-
-def GetQuestion(self):
-    return self.__Question
-
-
-def CheckAnswer(self, AnswerP):
-    if int(self.__Answer) == AnswerP:
-        return True
-    else:
-        return False
-
-
-def GetPoints(self, Attempts):
-    if Attempts == 1:
-        return int(self.__Points)
-    elif Attempts == 2:
-        return int(self__Points) // 2
-    elif Attempts == 3 or Attempts == 4:
-        return int(self.__Points) // 4
-    else:
-        return 0
 
 
 def main():
@@ -57,7 +55,10 @@ def main():
         Result = False
         Attempts = 0
         while Result == False:
-            Answer: int(input(ArrayTreasure[Choice-1]).GetQuestion())
+            Answer = int(input(ArrayTreasure[Choice-1]).GetQuestion())
             Result = ArrayTreasure[Choice-1].CheckAnswer(Answer)
             Attempts = Attempts + 1
         print(int(ArrayTreasure[Choice-1].GetPoints(Attempts)))
+
+
+main()
