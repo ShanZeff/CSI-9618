@@ -24,7 +24,7 @@ class HiddenBox:
 
 
 TheBoxes = [HiddenBox("", "", "", "") for i in range(0, 10000)]
-
+NumBoxes = 0    # sadge
 def NewBox(TheBoxes, NumBoxes):
     BoxName = input("Enter the name of the box: ")
     Creator = input("Enter the creator's name: ")
@@ -34,8 +34,7 @@ def NewBox(TheBoxes, NumBoxes):
     return NumBoxes + 1
 
 
-NumBoxes = NewBox(TheBoxes, NumBoxes)
-
+NewBox(TheBoxes, NumBoxes)  # sadge
 
 class PuzzleBox(HiddenBox):
     # __PuzzleText String
