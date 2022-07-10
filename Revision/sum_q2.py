@@ -16,7 +16,7 @@ def BubbleSort():
             if TheArray[y] < TheArray[y+1]:
                 Temp = TheArray[y]
                 TheArray[y] = TheArray[y+1]
-                TheArray[y] = Temp
+                TheArray[y+1] = Temp
 
 
 def main():
