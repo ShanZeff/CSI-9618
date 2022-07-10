@@ -1,12 +1,13 @@
 # Specimen 21 Q2
+# OOP -Finished
 
 class HiddenBox:
-    # __BoxName String
-    # __Creator String
-    # __DateHidden String
-    # __GameLocation String
-    # __LastFinds [10] [2] String
-    # __Active Boolean
+    # Private BoxName : String
+    # Private Creator : String
+    # Private DateHidden : String
+    # Private GameLocation : String
+    # Private LastFinds [10] [2] : String
+    # Private Active : Boolean
 
     def __init__(self, NewBoxName, NewCreator, NewDateHidden, NewLocation):
         self.__BoxName = NewBoxName
@@ -23,8 +24,6 @@ class HiddenBox:
         return self.__GameLocation
 
 
-TheBoxes = [HiddenBox("", "", "", "") for i in range(0, 10000)]
-
 def NewBox(TheBoxes, NumBoxes):
     BoxName = input("Enter the name of the box: ")
     Creator = input("Enter the creator's name: ")
@@ -34,8 +33,6 @@ def NewBox(TheBoxes, NumBoxes):
     return NumBoxes + 1
 
 
-NumBoxes = NewBox(TheBoxes, NumBoxes)
-
 class PuzzleBox(HiddenBox):
     # __PuzzleText String
     # __Solution String
@@ -44,3 +41,12 @@ class PuzzleBox(HiddenBox):
         super().__init__(NewBoxName, NewCreator, NewDateHidden, NewLocation)
         self.__PuzzleText = NewPuzzleText
         self.__Solution = NewSolution
+
+
+def main():
+    TheBoxes = [HiddenBox("", "", "", "") for i in range(0, 10000)]
+    NumBoxes = 0
+    NewBox(TheBoxes, NumBoxes)
+
+
+main()

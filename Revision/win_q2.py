@@ -1,4 +1,5 @@
 # Winter 21 Q2
+# OOP -Finished
 
 class Picture:
     def __init__(self, DescriptionP, WidthSizeP, HeightSizeP, FrameColourP):
@@ -28,7 +29,7 @@ for i in range(100):
     PictureArray.append(Picture("", 0, 0, ""))
 
 def ReadData(PictureArray):
-    Filename = "C:/Users/shnaya/Desktop/For OOP/9618_w21_sf_41/Pictures.txt"
+    Filename = "C:/Users/shnaya/Desktop/For OOP/9618_win21_sf_41/Pictures.txt"
     Counter = 0
     try:
         File = open(Filename, "r")
@@ -43,11 +44,11 @@ def ReadData(PictureArray):
         File.close()
     except IOError:
         print("Could not find file")
-    return Counter, PictureArray
+    return Counter
 
 
 def main():
-    NumberPictureInArray, PictureArray = ReadData(PictureArray)
+    NumberPictureInArray = ReadData(PictureArray)
     FrameColour = input("Input the Frame colour: ").lower()
     MaxWidth = int(input("Input the Maximum Width: "))
     MaxHeight = int(input("Input the Maximum Height: "))

@@ -1,4 +1,5 @@
 # Summer 21 Q3
+# OOP -Finished
 
 class TreasureChest:
     # Private Question : String
@@ -33,7 +34,7 @@ class TreasureChest:
 # ArrayTreasure(5) as TreasureChest
 ArrayTreasure = []
 def ReadData():
-    Filename = "C:/Users/shnaya/Desktop/For OOP/9618_s21_sf_41/TreasureChestData.txt"
+    Filename = "C:/Users/shnaya/Desktop/For OOP/9618_sum21_sf_41/TreasureChestData.txt"
     try:
         File = open(Filename, "r")
         DataFetched = (File.readline()).strip()
