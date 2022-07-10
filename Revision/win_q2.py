@@ -1,5 +1,5 @@
 # Winter 21 Q2
-# OOP -Finished
+# OOP: Files -Finished
 
 class Picture:
     def __init__(self, DescriptionP, WidthSizeP, HeightSizeP, FrameColourP):
