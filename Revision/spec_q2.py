@@ -34,8 +34,8 @@ def NewBox(TheBoxes, NumBoxes):
 
 
 class PuzzleBox(HiddenBox):
-    # __PuzzleText String
-    # __Solution String
+    # PuzzleText    : String
+    # Solution      : String
 
     def __init__(self, NewBoxName, NewCreator, NewDateHidden, NewLocation, NewPuzzleText, NewSolution):
         super().__init__(NewBoxName, NewCreator, NewDateHidden, NewLocation)

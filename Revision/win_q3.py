@@ -53,8 +53,7 @@ def main():
     for X in range(0, 10):
         ArrayNodes, RootPointer, FreeNode = AddNode(ArrayNodes, RootPointer, FreeNode)
     PrintAll(ArrayNodes)
-    InOrder(ArrayNodes, RootNode)
-    PrintAll(ArrayNodes)
+    InOrder(ArrayNodes, RootPointer)
 
 
 main()

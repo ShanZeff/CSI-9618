@@ -29,7 +29,7 @@ for i in range(100):
     PictureArray.append(Picture("", 0, 0, ""))
 
 def ReadData(PictureArray):
-    Filename = "C:/Users/shnaya/Desktop/For OOP/9618_win21_sf_41/Pictures.txt"
+    Filename = "C:/Users/shnaya/Desktop/9618 Practical/9618_win21_sf_41/Pictures.txt"
     Counter = 0
     try:
         File = open(Filename, "r")
