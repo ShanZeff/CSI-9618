@@ -3,7 +3,6 @@
 # NullPointer should be set to -1 if using array element with index 0
 NullPointer = -1
 
-
 # Declare record type to store Data and Pointer
 class ListNode:
     def __init__(self):
@@ -13,11 +12,11 @@ class ListNode:
 
 def InitialiseList():
     List = [ListNode() for i in range(8)]
-    StartPointer = NullPointer    # set start Pointer
-    FreeListPtr = 0               # set starting position of free List
-    for Index in range(7):          # link all nodes to make free List
+    StartPointer = NullPointer          # set start Pointer
+    FreeListPtr = 0                     # set starting position of free List
+    for Index in range(7):              # link all nodes to make free List
         List[Index].Pointer = Index + 1
-    List[7].Pointer = NullPointer  # last node of free List
+    List[7].Pointer = NullPointer       # last node of free List
     return List, StartPointer, FreeListPtr
 
 
@@ -31,8 +30,8 @@ def InsertNode(List, StartPointer, FreeListPtr, NewItem):
         # find insertion point
         PreviousNodePtr = NullPointer
         ThisNodePtr = StartPointer   # start at beginning of List
-        while ThisNodePtr != NullPointer and List[ThisNodePtr].Data < NewItem:
 
+        while ThisNodePtr != NullPointer and List[ThisNodePtr].Data < NewItem:
             # while not end of List
             PreviousNodePtr = ThisNodePtr   # remember this node
             # follow the Pointer to the next node
@@ -46,22 +45,22 @@ def InsertNode(List, StartPointer, FreeListPtr, NewItem):
             List[NewNodePtr].Pointer = List[PreviousNodePtr].Pointer
             List[PreviousNodePtr].Pointer = NewNodePtr
     else:
-        print("no space for more Data")
+        print("No space for more Data")
     return List, StartPointer, FreeListPtr
 
 
-def FindNode(List, StartPointer, data_item):  # returns Pointer to node
+def FindNode(List, StartPointer, DataItem):  # returns Pointer to node
     CurrentNodePtr = StartPointer    # start at beginning of List
-    while CurrentNodePtr != NullPointer and List[CurrentNodePtr].Data != data_item:
+    while CurrentNodePtr != NullPointer and List[CurrentNodePtr].Data != DataItem:
         # not end of List, item not found
         # follow the Pointer to the next node
         CurrentNodePtr = List[CurrentNodePtr].Pointer
     return CurrentNodePtr     # return NullPointer if item not found
 
 
-def DeleteNode(List, StartPointer, FreeListPtr, data_item):
+def DeleteNode(List, StartPointer, FreeListPtr, DataItem):
     ThisNodePtr = StartPointer       # start at beginning of List
-    while ThisNodePtr != NullPointer and List[ThisNodePtr].Data != data_item:
+    while ThisNodePtr != NullPointer and List[ThisNodePtr].Data != DataItem:
         # while not end of List and item not found
         PreviousNodePtr = ThisNodePtr   # remember this node
         # follow the Pointer to the next node
@@ -94,23 +93,23 @@ def GetOption():
     print("3: find a value")
     print("4: output List")
     print("5: end program")
-    option = input("Enter your choice: ")
-    return option
+    Option = input("Enter your choice: ")
+    return Option
 
 
 List, StartPointer, FreeListPtr = InitialiseList()
 
-option = GetOption()
-while option != "5":
-    if option == "1":
+Option = GetOption()
+while Option != "5":
+    if Option == "1":
         Data = input("Enter the value: ")
         List, StartPointer, FreeListPtr = InsertNode(List, StartPointer, FreeListPtr, Data)
         OutputAllNodes(List, StartPointer)
-    elif option == "2":
+    elif Option == "2":
         Data = input("Enter the value: ")
         List, StartPointer, FreeListPtr = DeleteNode(List, StartPointer, FreeListPtr, Data)
         OutputAllNodes(List, StartPointer)
-    elif option == "3":
+    elif Option == "3":
         Data = input("Enter the value: ")
         CurrentNodePtr = FindNode(List, StartPointer, Data)
         if CurrentNodePtr == NullPointer:
@@ -118,6 +117,6 @@ while option != "5":
         print(StartPointer, FreeListPtr)
         for i in range(8):
             print(i, " ", List[i].Data, " ", List[i].Pointer)
-    elif option == "4":
+    elif Option == "4":
         OutputAllNodes(List, StartPointer)
-    option = GetOption()
+    Option = GetOption()
