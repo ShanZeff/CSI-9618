@@ -1,123 +1,123 @@
 # ADT: Linked List
 
 # NullPointer should be set to -1 if using array element with index 0
-null_pointer = -1
+NullPointer = -1
 
 
-# Declare record type to store data and pointer
+# Declare record type to store Data and Pointer
 class ListNode:
     def __init__(self):
-        self.data = ""
-        self.pointer = null_pointer
+        self.Data = ""
+        self.Pointer = NullPointer
 
 
-def initialise_list():
-    list = [ListNode() for i in range(8)]
-    start_pointer = null_pointer    # set start pointer
-    free_list_ptr = 0               # set starting position of free list
-    for Index in range(7):          # link all nodes to make free list
-        list[Index].pointer = Index + 1
-    list[7].pointer = null_pointer  # last node of free list
-    return list, start_pointer, free_list_ptr
+def InitialiseList():
+    List = [ListNode() for i in range(8)]
+    StartPointer = NullPointer    # set start Pointer
+    FreeListPtr = 0               # set starting position of free List
+    for Index in range(7):          # link all nodes to make free List
+        List[Index].Pointer = Index + 1
+    List[7].Pointer = NullPointer  # last node of free List
+    return List, StartPointer, FreeListPtr
 
 
-def insert_node(list, start_pointer, free_list_ptr, new_item):
-    if free_list_ptr != null_pointer:
+def InsertNode(List, StartPointer, FreeListPtr, NewItem):
+    if FreeListPtr != NullPointer:
         # there is space in the array
-        # take node from free list and store data item
-        new_node_ptr = free_list_ptr
-        list[new_node_ptr].data = new_item
-        free_list_ptr = list[free_list_ptr].pointer
+        # take node from free List and store Data item
+        NewNodePtr = FreeListPtr
+        List[NewNodePtr].Data = NewItem
+        FreeListPtr = List[FreeListPtr].Pointer
         # find insertion point
-        previous_node_ptr = null_pointer
-        this_node_ptr = start_pointer   # start at beginning of list
-        while this_node_ptr != null_pointer and list[this_node_ptr].data < new_item:
+        PreviousNodePtr = NullPointer
+        ThisNodePtr = StartPointer   # start at beginning of List
+        while ThisNodePtr != NullPointer and List[ThisNodePtr].Data < NewItem:
 
-            # while not end of list
-            previous_node_ptr = this_node_ptr   # remember this node
-            # follow the pointer to the next node
-            this_node_ptr = list[this_node_ptr].pointer
+            # while not end of List
+            PreviousNodePtr = ThisNodePtr   # remember this node
+            # follow the Pointer to the next node
+            ThisNodePtr = List[ThisNodePtr].Pointer
 
-        if previous_node_ptr == null_pointer:
-            # insert new node at start of list
-            list[new_node_ptr].pointer = start_pointer
-            start_pointer = new_node_ptr
+        if PreviousNodePtr == NullPointer:
+            # insert new node at start of List
+            List[NewNodePtr].Pointer = StartPointer
+            StartPointer = NewNodePtr
         else:   # insert new node between previous node and this node
-            list[new_node_ptr].pointer = list[previous_node_ptr].pointer
-            list[previous_node_ptr].pointer = new_node_ptr
+            List[NewNodePtr].Pointer = List[PreviousNodePtr].Pointer
+            List[PreviousNodePtr].Pointer = NewNodePtr
     else:
-        print("no space for more data")
-    return list, start_pointer, free_list_ptr
+        print("no space for more Data")
+    return List, StartPointer, FreeListPtr
 
 
-def find_node(list, start_pointer, data_item):  # returns pointer to node
-    current_node_ptr = start_pointer    # start at beginning of list
-    while current_node_ptr != null_pointer and list[current_node_ptr].data != data_item:
-        # not end of list, item not found
-        # follow the pointer to the next node
-        current_node_ptr = list[current_node_ptr].pointer
-    return current_node_ptr     # return NullPointer if item not found
+def FindNode(List, StartPointer, data_item):  # returns Pointer to node
+    CurrentNodePtr = StartPointer    # start at beginning of List
+    while CurrentNodePtr != NullPointer and List[CurrentNodePtr].Data != data_item:
+        # not end of List, item not found
+        # follow the Pointer to the next node
+        CurrentNodePtr = List[CurrentNodePtr].Pointer
+    return CurrentNodePtr     # return NullPointer if item not found
 
 
-def delete_node(list, start_pointer, free_list_ptr, data_item):
-    this_node_ptr = start_pointer       # start at beginning of list
-    while this_node_ptr != null_pointer and list[this_node_ptr].data != data_item:
-        # while not end of list and item not found
-        previous_node_ptr = this_node_ptr   # remember this node
-        # follow the pointer to the next node
-        this_node_ptr = list[this_node_ptr].pointer
-    if this_node_ptr != null_pointer:       # node exists in list
-        if this_node_ptr == start_pointer:  # first node to be deleted
-            start_pointer == list[start_pointer].pointer
+def DeleteNode(List, StartPointer, FreeListPtr, data_item):
+    ThisNodePtr = StartPointer       # start at beginning of List
+    while ThisNodePtr != NullPointer and List[ThisNodePtr].Data != data_item:
+        # while not end of List and item not found
+        PreviousNodePtr = ThisNodePtr   # remember this node
+        # follow the Pointer to the next node
+        ThisNodePtr = List[ThisNodePtr].Pointer
+    if ThisNodePtr != NullPointer:       # node exists in List
+        if ThisNodePtr == StartPointer:  # first node to be deleted
+            StartPointer == List[StartPointer].Pointer
         else:
-            list[previous_node_ptr].pointer = list[this_node_ptr].pointer
-        list[this_node_ptr].pointer = free_list_ptr
-        free_list_ptr = this_node_ptr
+            List[PreviousNodePtr].Pointer = List[ThisNodePtr].Pointer
+        List[ThisNodePtr].Pointer = FreeListPtr
+        FreeListPtr = ThisNodePtr
     else:
-        print("data does not exist in list")
-    return list, start_pointer, free_list_ptr
+        print("Data does not exist in List")
+    return List, StartPointer, FreeListPtr
 
 
-def output_all_nodes(list, start_pointer):
-    current_node_ptr = start_pointer    # start at beginning of list
-    if start_pointer == null_pointer:
-        print("No data in list")
-    while current_node_ptr != null_pointer:     # while not end of list
-        print(current_node_ptr, " ", list[current_node_ptr].data)
-        # follow the pointer to the next node
-        current_node_ptr = list[current_node_ptr].pointer
+def OutputAllNodes(List, StartPointer):
+    CurrentNodePtr = StartPointer    # start at beginning of List
+    if StartPointer == NullPointer:
+        print("No Data in List")
+    while CurrentNodePtr != NullPointer:     # while not end of List
+        print(CurrentNodePtr, " ", List[CurrentNodePtr].Data)
+        # follow the Pointer to the next node
+        CurrentNodePtr = List[CurrentNodePtr].Pointer
 
 
-def get_option():
+def GetOption():
     print("1: insert a value")
     print("2: delete a value")
     print("3: find a value")
-    print("4: output list")
+    print("4: output List")
     print("5: end program")
     option = input("Enter your choice: ")
     return option
 
 
-list, start_pointer, free_list_ptr = initialise_list()
+List, StartPointer, FreeListPtr = InitialiseList()
 
-option = get_option()
+option = GetOption()
 while option != "5":
     if option == "1":
-        data = input("Enter the value: ")
-        list, start_pointer, free_list_ptr = insert_node(list, start_pointer, free_list_ptr, data)
-        output_all_nodes(list, start_pointer)
+        Data = input("Enter the value: ")
+        List, StartPointer, FreeListPtr = InsertNode(List, StartPointer, FreeListPtr, Data)
+        OutputAllNodes(List, StartPointer)
     elif option == "2":
-        data = input("Enter the value: ")
-        list, start_pointer, free_list_ptr = delete_node(list, start_pointer, free_list_ptr, data)
-        output_all_nodes(list, start_pointer)
+        Data = input("Enter the value: ")
+        List, StartPointer, FreeListPtr = DeleteNode(List, StartPointer, FreeListPtr, Data)
+        OutputAllNodes(List, StartPointer)
     elif option == "3":
-        data = input("Enter the value: ")
-        current_node_ptr = find_node(list, start_pointer, data)
-        if current_node_ptr == null_pointer:
-            print("data not found")
-        print(start_pointer, free_list_ptr)
+        Data = input("Enter the value: ")
+        CurrentNodePtr = FindNode(List, StartPointer, Data)
+        if CurrentNodePtr == NullPointer:
+            print("Data not found")
+        print(StartPointer, FreeListPtr)
         for i in range(8):
-            print(i, " ", list[i].data, " ", list[i].pointer)
+            print(i, " ", List[i].Data, " ", List[i].Pointer)
     elif option == "4":
-        output_all_nodes(list, start_pointer)
-    option = get_option()
+        OutputAllNodes(List, StartPointer)
+    option = GetOption()

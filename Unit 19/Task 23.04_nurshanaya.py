@@ -24,6 +24,6 @@ while not Found and not SearchFailed:
 
 
 if Found == True:
-    print("Item found at position: ", Index)
+    print("Item found at position:", Index)
 else:
     print("Item not present in array.")
