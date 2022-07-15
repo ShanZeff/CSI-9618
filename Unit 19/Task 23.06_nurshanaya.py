@@ -1,104 +1,106 @@
-# Binary Search Tree
+# ADT: Binary Search Tree
 
-# NullPointer should be set to -1 if using array element with index 0
-null_pointer = -1
+# NullPointer should be set to -1 if using array element with Index 0
+NullPointer = -1
 
-
-# Declare record type to store data and pointer
+# Declare record type to store Data and pointer
 class TreeNode:
     def __init__(self):
-        self.data = ""
-        self.left_pointer = null_pointer
-        self.right_pointer = null_pointer
+        self.Data = ""
+        self.LeftPointer = NullPointer
+        self.RightPointer = NullPointer
 
 
-def initialise_tree():
-    tree = [TreeNode() for i in range(8)]
-    root_pointer = null_pointer     # set Root pointer
-    free_ptr = 0                    # set starting position of free list
-    for index in range(7):          # link all nodes to make free list
-        tree[index].left_pointer = index + 1
-    return tree, root_pointer, free_ptr
+def InitialiseTree():
+    Tree = [TreeNode() for i in range(8)]
+    RootPointer = NullPointer       # set Root pointer
+    FreePtr = 0                     # set starting position of free list
+    for Index in range(7):          # link all nodes to make free list
+        Tree[Index].LeftPointer = Index + 1
+    return Tree, RootPointer, FreePtr
 
 
-def insert_node(tree, root_pointer, free_ptr, new_item):
-    if free_ptr != null_pointer:
+def InsertNode(Tree, RootPointer, FreePtr, NewItem):
+    if FreePtr != NullPointer:
         # there is space in the array
-        # take node from free list and store data item
-        new_node_ptr = free_ptr
-        tree[new_node_ptr].data = new_item
-        free_ptr = tree[free_ptr].left_pointer
-        tree[new_node_ptr].data = new_item
-        free_ptr = tree[free_ptr].left_pointer
-        tree[new_node_ptr].left_pointer = null_pointer
-        # check if empty tree
-        if root_pointer == null_pointer:
+        # take node from free list and store Data item
+        NewNodePtr = FreePtr
+        Tree[NewNodePtr].Data = NewItem
+        FreePtr = Tree[FreePtr].LeftPointer
+        Tree[NewNodePtr].LeftPointer = NullPointer
+
+        # check if empty Tree
+        if RootPointer == NullPointer:
             # insert new node at root
-            root_pointer = new_node_ptr
+            RootPointer = NewNodePtr
         else:   # find insertion point
-            this_node_ptr = root_pointer
-            while this_node_ptr != null_pointer:    # while not a leaf node
-                previous_node_ptr = this_node_ptr   # remember this node
-                if tree[this_node_ptr].data > new_item:
-                    turned_left = True
-                    this_node_ptr = tree[this_node_ptr].left_pointer
+            ThisNodePtr = RootPointer
+            while ThisNodePtr != NullPointer:   # while not a leaf node
+                PreviousNodePtr = ThisNodePtr   # remember this node
+                if Tree[ThisNodePtr].Data > NewItem:
+                    TurnedLeft = True
+                    ThisNodePtr = Tree[ThisNodePtr].LeftPointer
                 else:
-                    turned_left = False
-                    this_node_ptr = tree[this_node_ptr].right_pointer
-                if turned_left:
-                    tree[previous_node_ptr].left_pointer = new_node_ptr
+                    TurnedLeft = False
+                    ThisNodePtr = Tree[ThisNodePtr].RightPointer
+                if TurnedLeft:
+                    Tree[PreviousNodePtr].LeftPointer = NewNodePtr
                 else:
-                    tree[previous_node_ptr].right_pointer = new_node_ptr
+                    Tree[PreviousNodePtr].RightPointer = NewNodePtr
     else:
-        print("no space for more data")
-    return tree, root_pointer, free_ptr
+        print("No space for more Data")
+    return Tree, RootPointer, FreePtr
 
 
-def find_node(tree, root_pointer, search_item):
-    this_node_ptr = root_pointer    # start at the root of the tree
-    while this_node_ptr != null_pointer and tree[this_node_ptr].data != search_item:
+def FindNode(Tree, RootPointer, SearchItem):
+    ThisNodePtr = RootPointer    # start at the root of the Tree
+    while ThisNodePtr != NullPointer and Tree[ThisNodePtr].Data != SearchItem:
         # while there is a pointer to follow and search item not found
-        if tree[this_node_ptr].data > search_item:
-            this_node_ptr = tree[this_node_ptr].left_pointer    # follow left pointer
+        if Tree[ThisNodePtr].Data > SearchItem:
+            ThisNodePtr = Tree[ThisNodePtr].LeftPointer    # follow left pointer
         else:
-            this_node_ptr = tree[this_node_ptr].right_pointer   # follow right pointer
-    return this_node_ptr
+            ThisNodePtr = Tree[ThisNodePtr].RightPointer   # follow right pointer
+    return ThisNodePtr
 
 
-def traverse_tree(tree, root_pointer):
-    if root_pointer != null_pointer:
-        traverse_tree(tree, tree[root_pointer].left_pointer)
-        print(tree[root_pointer].data)
-        traverse_tree(tree, tree[root_pointer].right_pointer)
+def TraverseTree(Tree, RootPointer):
+    if RootPointer != NullPointer:
+        TraverseTree(Tree, Tree[RootPointer].LeftPointer)
+        print(Tree[RootPointer].Data)
+        TraverseTree(Tree, Tree[RootPointer].RightPointer)
 
 
-def get_option():
-    print("1: add data")
-    print("2: find data")
-    print("3: traverse tree")
+def GetOption():
+    print("1: add Data")
+    print("2: find Data")
+    print("3: traverse Tree")
     print("4: end program")
-    option = input("Enter your choice: ")
-    return option
+    Option = input("Enter your choice: ")
+    return Option
 
 
-tree, root_pointer, free_ptr = initialise_tree()
+def main():
+    Tree, RootPointer, FreePtr = InitialiseTree()
 
-option = get_option()
-while option != "4":
-    if option == "1":
-        data = input("Enter the value: ")
-        tree, root_pointer, free_ptr = insert_node(tree, root_pointer, free_ptr, data)
-        traverse_tree(tree, root_pointer)
-    elif option == "2":
-        data = input("Enter search value: ")
-        this_node_ptr = find_node(tree, root_pointer, data)
-        if this_node_ptr == null_pointer:
-            print("Value not found")
-        else:
-            print("value found at ", this_node_ptr)
-        print(root_pointer, free_ptr)
-        for i in range(8):
-            print(1, " ", tree[i].left_pointer, " ", tree[i].data, " ", tree[i].right_pointer)
-    elif option == "3":
-        traverse_tree(tree, root_pointer)
-    option = get_option()
+    Option = GetOption()
+    while Option != "4":
+        if Option == "1":
+            Data = input("Enter the value: ")
+            Tree, RootPointer, FreePtr = InsertNode(Tree, RootPointer, FreePtr, Data)
+            TraverseTree(Tree, RootPointer)
+        elif Option == "2":
+            Data = input("Enter search value: ")
+            ThisNodePtr = FindNode(Tree, RootPointer, Data)
+            if ThisNodePtr == NullPointer:
+                print("Value not found")
+            else:
+                print("value found at ", ThisNodePtr)
+            print(RootPointer, FreePtr)
+            for i in range(8):
+                print(1, " ", Tree[i].LeftPointer, " ", Tree[i].Data, " ", Tree[i].RightPointer)
+        elif Option == "3":
+            TraverseTree(Tree, RootPointer)
+        Option = GetOption()
+
+
+main()

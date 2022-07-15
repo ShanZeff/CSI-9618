@@ -97,26 +97,30 @@ def GetOption():
     return Option
 
 
-List, StartPointer, FreeListPtr = InitialiseList()
+def main():
+    List, StartPointer, FreeListPtr = InitialiseList()
 
-Option = GetOption()
-while Option != "5":
-    if Option == "1":
-        Data = input("Enter the value: ")
-        List, StartPointer, FreeListPtr = InsertNode(List, StartPointer, FreeListPtr, Data)
-        OutputAllNodes(List, StartPointer)
-    elif Option == "2":
-        Data = input("Enter the value: ")
-        List, StartPointer, FreeListPtr = DeleteNode(List, StartPointer, FreeListPtr, Data)
-        OutputAllNodes(List, StartPointer)
-    elif Option == "3":
-        Data = input("Enter the value: ")
-        CurrentNodePtr = FindNode(List, StartPointer, Data)
-        if CurrentNodePtr == NullPointer:
-            print("Data not found")
-        print(StartPointer, FreeListPtr)
-        for i in range(8):
-            print(i, " ", List[i].Data, " ", List[i].Pointer)
-    elif Option == "4":
-        OutputAllNodes(List, StartPointer)
     Option = GetOption()
+    while Option != "5":
+        if Option == "1":
+            Data = input("Enter the value: ")
+            List, StartPointer, FreeListPtr = InsertNode(List, StartPointer, FreeListPtr, Data)
+            OutputAllNodes(List, StartPointer)
+        elif Option == "2":
+            Data = input("Enter the value: ")
+            List, StartPointer, FreeListPtr = DeleteNode(List, StartPointer, FreeListPtr, Data)
+            OutputAllNodes(List, StartPointer)
+        elif Option == "3":
+            Data = input("Enter the value: ")
+            CurrentNodePtr = FindNode(List, StartPointer, Data)
+            if CurrentNodePtr == NullPointer:
+                print("Data not found")
+            print(StartPointer, FreeListPtr)
+            for i in range(8):
+                print(i, " ", List[i].Data, " ", List[i].Pointer)
+        elif Option == "4":
+            OutputAllNodes(List, StartPointer)
+        Option = GetOption()
+
+
+main()

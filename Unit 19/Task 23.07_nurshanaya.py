@@ -1,89 +1,91 @@
-# Stack
+# ADT: Stack
 
-# NullPointer should be set to -1 if using array element with index 0
-null_pointer = -1
+# NullPointer should be set to -1 if using array element with Index 0
+NullPointer = -1
 
-
-# Declare record type to store data and pointer
+# Declare record type to store Data and Pointer
 class Node:
     def __init__(self):
-        self.data = ""
-        self.pointer = null_pointer
+        self.Data = ""
+        self.Pointer = NullPointer
 
 
-def initialise_stack():
+def InitialiseStack():
     Stack = [Node() for i in range(8)]
-    TopOfStack = null_pointer               # set start pointer
-    FreeListPtr = 0                         # set starting position of free list
-    for index in range(7):                  # link all nodes to make free list
-        Stack[index].pointer = index + 1
-    Stack[7].pointer = null_pointer         # last node of free list
+    TopOfStack = NullPointer            # set start Pointer
+    FreeListPtr = 0                     # set starting position of free list
+    for Index in range(7):              # link all nodes to make free list
+        Stack[Index].Pointer = Index + 1
+    Stack[7].Pointer = NullPointer      # last node of free list
     return Stack, TopOfStack, FreeListPtr
 
 
-def push(Stack, TopOfStack, FreeListPtr, new_item):
-    if FreeListPtr != null_pointer:
+def Push(Stack, TopOfStack, FreeListPtr, NewItem):
+    if FreeListPtr != NullPointer:
         # there is space in the array
-        # take node from free list and store data item
+        # take node from free list and store Data item
         NewNodePtr = FreeListPtr
-        Stack[NewNodePtr].data = new_item
-        FreeListPtr = Stack[FreeListPtr].pointer
+        Stack[NewNodePtr].Data = NewItem
+        FreeListPtr = Stack[FreeListPtr].Pointer
         # insert new node at top of stack
-        Stack[NewNodePtr].pointer = TopOfStack
+        Stack[NewNodePtr].Pointer = TopOfStack
         TopOfStack = NewNodePtr
     else:
-        print("no space for more data")
+        print("no space for more Data")
     return Stack, TopOfStack, FreeListPtr
 
 
-def pop(Stack, TopOfStack, FreeListPtr):
-    if TopOfStack == null_pointer:
-        print("no data on stack")
-        value = ""
+def Pop(Stack, TopOfStack, FreeListPtr):
+    if TopOfStack == NullPointer:
+        print("no Data on stack")
+        Value = ""
     else:
-        value = Stack[TopOfStack].data
+        Value = Stack[TopOfStack].Data
         ThisNodePtr = TopOfStack
-        TopOfStack = Stack[TopOfStack].pointer
-        Stack[ThisNodePtr].pointer = FreeListPtr
+        TopOfStack = Stack[TopOfStack].Pointer
+        Stack[ThisNodePtr].Pointer = FreeListPtr
         FreeListPtr = ThisNodePtr
-    return Stack, TopOfStack, FreeListPtr, value
+    return Stack, TopOfStack, FreeListPtr, Value
 
 
-def output_all_nodes(Stack, TopOfStack):
-    CurrentNodePtr = TopOfStack                     # start at beginning of list
-    if TopOfStack == null_pointer:
-        print("No data on stack")
-    while CurrentNodePtr != null_pointer:           # while not end of list
-        print(CurrentNodePtr, " ", Stack[CurrentNodePtr].data)
-        # follow the pointer to the next node
-        CurrentNodePtr = Stack[CurrentNodePtr].pointer
+def OutputAllNodes(Stack, TopOfStack):
+    CurrentNodePtr = TopOfStack             # start at beginning of list
+    if TopOfStack == NullPointer:
+        print("No Data on stack")
+    while CurrentNodePtr != NullPointer:    # while not end of list
+        print(CurrentNodePtr, " ", Stack[CurrentNodePtr].Data)
+        # follow the Pointer to the next node
+        CurrentNodePtr = Stack[CurrentNodePtr].Pointer
 
 
-def get_option():
-    print("1: push a value")
-    print("2: pop a value")
-    print("3: output stack")
-    print("4: end program")
-    option = input("Enter your choice: ")
-    return option
+def GetOption():
+    print("1: Push a value")
+    print("2: Pop a value")
+    print("3: Output stack")
+    print("4: End program")
+    Option = input("Enter your choice: ")
+    return Option
 
 
-Stack, TopOfStack, FreeListPtr = initialise_stack()
+def main():
+    Stack, TopOfStack, FreeListPtr = InitialiseStack()
+
+    Option = GetOption()
+    while Option != "4":
+        if Option == "1":
+            Data = input("Enter the Value: ")
+            Stack, TopOfStack, FreeListPtr = Push(Stack, TopOfStack, FreeListPtr, Data)
+            OutputAllNodes(Stack, TopOfStack)
+        elif Option == "2":
+            Stack, TopOfStack, FreeListPtr, Value = Pop(Stack, TopOfStack, FreeListPtr)
+            print("Data popped: ", Value)
+            OutputAllNodes(Stack, TopOfStack)
+        elif Option == "3":
+            OutputAllNodes(Stack, TopOfStack)
+            print(TopOfStack, FreeListPtr)
+            for i in range(8):
+                print(i, " ", Stack[i].Data, " ", Stack[i].Pointer)
+        Option = GetOption()
 
 
-option = get_option()
-while option != "4":
-    if option == "1":
-        data = input("Enter the value: ")
-        Stack, TopOfStack, FreeListPtr = push(Stack, TopOfStack, FreeListPtr, data)
-        output_all_nodes(Stack, TopOfStack)
-    elif option == "2":
-        Stack, TopOfStack, FreeListPtr, value = pop(Stack, TopOfStack, FreeListPtr)
-        print("Data popped: ", value)
-        output_all_nodes(Stack, TopOfStack)
-    elif option == "3":
-        output_all_nodes(Stack, TopOfStack)
-        print(TopOfStack, FreeListPtr)
-        for i in range(8):
-            print(i, " ", Stack[i].data, " ", Stack[i].pointer)
-    option = get_option()
+main()
