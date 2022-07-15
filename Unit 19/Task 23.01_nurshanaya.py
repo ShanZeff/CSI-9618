@@ -9,6 +9,7 @@ SearchValue = int(input("Which value do you want to find? "))
 Found = False
 Index = -1
 
+
 while not Found and Index < MaxIndex:
     Index += 1
     if MyList[Index] == SearchValue:

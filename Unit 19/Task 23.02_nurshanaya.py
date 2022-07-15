@@ -8,6 +8,7 @@ MaxIndex = 6
 n = MaxIndex
 NoMoreSwaps = False
 
+
 while NoMoreSwaps == False:
     NoMoreSwaps = True
     for j in range(n):
