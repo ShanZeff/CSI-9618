@@ -1,4 +1,5 @@
-# Bubble Sort
+# Search/sort: Bubble Sort
+
 MyList = []
 for Index in range(7):
     MyList.append(int(input("Enter a number: ")))

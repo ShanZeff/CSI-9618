@@ -1,4 +1,5 @@
-# Binary Search
+# Search/sort: Binary Search
+
 Found = False
 SearchFailed = False
 List = [7, 12, 19, 23, 27, 33, 37, 41, 45, 56, 59, 60, 62, 71, 75, 80, 84, 88, 92, 99]

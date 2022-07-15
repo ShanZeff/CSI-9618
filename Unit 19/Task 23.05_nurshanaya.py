@@ -1,4 +1,4 @@
-# Linked List
+# ADT: Linked List
 
 # NullPointer should be set to -1 if using array element with index 0
 null_pointer = -1

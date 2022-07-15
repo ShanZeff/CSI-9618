@@ -1,4 +1,5 @@
-# Linear Search
+# Search/sort: Linear Search
+
 MyList = []
 for Index in range(7):
     MyList.append(int(input("Enter a number: ")))

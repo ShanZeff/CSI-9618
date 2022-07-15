@@ -1,4 +1,5 @@
-# Insertion Sort
+# Search/sort: Insertion Sort
+
 List = [0, 53, 21, 60, 18, 42, 19]
 NumberOfItems = 6
 
