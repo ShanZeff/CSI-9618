@@ -3,7 +3,6 @@
 # Not Finished
 
 import os
-QueueData = ["" for i in range(0, 20)]
 
 def Enqueue(DataToAdd, QueueData, EndP):
     if EndP == 20:
@@ -20,9 +19,9 @@ def ReadFile(QueueData, StartP, EndP):
         f = open(FileName, "r")
         Flag = True
         DataToInsert = (f.readline()).strip()
-        while Flag == True and DataToInsert != None:
-            Flag, EndP = Enqueue(QueueData, EndP)
+        while Flag == True and DataToInsert != "":
             DataToInsert = (f.readline()).strip()
+            Flag, EndP = Enqueue(DataToInsert, QueueData, EndP)
         if Flag == False:
             f.close()
             return 1, EndP
@@ -45,6 +44,7 @@ def Remove(QueueData, StartP, EndP):
 
 
 def main():
+    QueueData = ["" for i in range(0, 20)]
     StartPointer = 0
     EndPointer = 0
     ReturnValue, EndPointer = ReadFile(QueueData, StartPointer, EndPointer)
