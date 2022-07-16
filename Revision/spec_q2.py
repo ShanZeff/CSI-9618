@@ -20,7 +20,7 @@ class HiddenBox:
     def GetBoxName(self):
         return self.__BoxName
 
-    def GetLocation(self):
+    def GetGameLocation(self):
         return self.__GameLocation
 
 
