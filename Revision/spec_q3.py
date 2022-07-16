@@ -1,6 +1,5 @@
 # Specimen 21 Q3
-# ADT: Queue, Files
-# Not Finished
+# ADT: Queue, Files -Finished
 
 import os
 
