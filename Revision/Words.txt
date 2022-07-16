@@ -1,0 +1,15 @@
+blackberry
+satsuma
+raspberry
+guava
+star_fruit
+kumquat
+grapefruit
+pomegranate
+avocado
+strawberry
+tomato
+nectarine
+plum
+passion_fruit
+cantaloupe
