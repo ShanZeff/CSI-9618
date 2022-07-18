@@ -1,5 +1,6 @@
 # Specimen 21 Q3
 # ADT: Queue, Files -Finished
+# 1st test
 
 import os
 
@@ -13,7 +14,7 @@ def Enqueue(DataToAdd, QueueData, EndP):
 
 
 def ReadFile(QueueData, StartP, EndP):
-    FileName = input("Enter a filename: ")
+    FileName = os.path.join(r"C:\Users\shnaya\Desktop\9618 Practical\9618_spec21_sf_4", input("Enter a filename: "))
     if os.path.isfile(FileName):
         f = open(FileName, "r")
         Flag = True
