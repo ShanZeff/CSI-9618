@@ -1,5 +1,6 @@
 # Summer 21 Q1
 # ADT: Linked list -Finished
+# Mock Q1
 
 class Node:
     def __init__(self, TheData, NextNodeNumber):

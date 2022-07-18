@@ -1,5 +1,6 @@
 # Summer 21 Q2
 # Search/sort: Linear search, bubble sort -Finished
+# Mock Q2
 
 ArrayData = [10, 5, 6, 7, 1, 12, 13, 15, 21, 8]
 
