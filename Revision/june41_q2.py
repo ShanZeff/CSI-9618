@@ -1,3 +1,7 @@
+# Summer 41 2022 Q2
+# OOP
+# Corrections made on initial code w/o ms
+
 class Balloon:
     # Private DefenceItem : STRING
     # Private Colour : STRING
@@ -12,41 +16,33 @@ class Balloon:
         return self.__DefenceItem
 
     def ChangeHealth(self, Number):
-        NewHealth = self.__Health + Number
-        return NewHealth
+        self.__Health = self.__Health + Number  # no need return (procedure), changed variable name
+
+    def CheckHealth(self):
+        if self.__Health <= 0:
+            return True
+        else:
+            return False  # should've been in class b4, removed variable
 
 
-def CheckHealth(Health):
-    if Health == 0 or Health < 0:
-        return True
-    else:
-        return False
+def Defend(MyBalloon):
+    OpponentStrength = int(input("Enter the opponent's strength: "))
+    MyBalloon.ChangeHealth(-OpponentStrength)  # simplified it by using "-OpponentStrength"
+    print("You defended with", str(MyBalloon.GetDefenceItem()))
 
-
-def Defend(BalloonUser):
-    OpponentStrength = int(input("Enter in the opponent's strength: "))
-    # change health
-    MinusValue = OpponentStrength * -1
-    CurrentHealth = BalloonUser.ChangeHealth(MinusValue)
-
-    # output item
-    print(BalloonUser.GetDefenceItem())
-
-    # check health
-    ReturnValue = CheckHealth(CurrentHealth)
+    ReturnValue = MyBalloon.CheckHealth()
     if ReturnValue == True:
         print("Your balloon has no health remaining.")
     else:
         print("Your balloon has health remaining.")
-
-    return BalloonUser
+    return MyBalloon
 
 
 def main():
-    ItemInput = input("Enter in the defence item: ")
-    ColourInput = input("Enter in the balloon colour: ")
+    ItemInput = input("Enter the defence item: ")
+    ColourInput = input("Enter the balloon colour: ")
     Balloon1 = Balloon(ItemInput, ColourInput)
-    Defend(Balloon1)
+    Balloon1 = Defend(Balloon1)  # storing return value over object
 
 
 main()
