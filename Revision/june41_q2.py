@@ -3,7 +3,7 @@ class Balloon:
     # Private Colour : STRING
     # Private Health : INTEGER
 
-    def _init_(self, DefenceItemP, ColourP):
+    def __init__(self, DefenceItemP, ColourP):
         self.__DefenceItem = DefenceItemP
         self.__Colour = ColourP
         self.__Health = 100
@@ -15,21 +15,38 @@ class Balloon:
         NewHealth = self.__Health + Number
         return NewHealth
 
-    def CheckHealth(self, NewHealth):
-        if NewHealth == 0 or NewHealth < 0:
-            return True
-        else:
-            return False
+
+def CheckHealth(Health):
+    if Health == 0 or Health < 0:
+        return True
+    else:
+        return False
 
 
 def Defend(BalloonUser):
-    OpponentStrength = input("Enter in the strength of opponent: ")
-    ChangeHealth(self, ?)
+    OpponentStrength = int(input("Enter in the opponent's strength: "))
+    # change health
+    MinusValue = OpponentStrength * -1
+    CurrentHealth = BalloonUser.ChangeHealth(MinusValue)
+
+    # output item
+    print(BalloonUser.GetDefenceItem())
+
+    # check health
+    ReturnValue = CheckHealth(CurrentHealth)
+    if ReturnValue == True:
+        print("Your balloon has no health remaining.")
+    else:
+        print("Your balloon has health remaining.")
+
+    return BalloonUser
 
 
 def main():
-        ItemInput = input("Enter in a defence item: ")
-        ColourInput = input("Enter in a colour: ")
-        Balloon1 = Balloon(ItemInput, ColourInput)
+    ItemInput = input("Enter in the defence item: ")
+    ColourInput = input("Enter in the balloon colour: ")
+    Balloon1 = Balloon(ItemInput, ColourInput)
+    Defend(Balloon1)
 
-    main()
+
+main()
