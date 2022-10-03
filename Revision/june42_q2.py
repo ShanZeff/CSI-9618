@@ -40,19 +40,8 @@ def main():
                     ArrayData[X][Z] = ArrayData[X][Z + 1]
                     ArrayData[X][Z + 1] = TempNumber
 
-    # ArrayData[X][Z], ArrayData[X][Z+1] = ArrayData[X][Z+1], ArrayData[X][Z]
     print("After")
     Printarray(ArrayData)
-
-    # Lower = int(input("Enter lower bound number: "))
-    # Upper = int(input("Enter upper bound number: "))
-    # SearchValue = int(input("Enter number to be found: "))
-    # BinarySearch(ArrayData, Lower, Upper, SearchValue)
-
-    # search value in first line
-    # its index: 0, 1, 2
-    # search value not in first
-    # -1
 
 
 main()
